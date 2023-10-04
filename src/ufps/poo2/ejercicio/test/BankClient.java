@@ -6,86 +6,61 @@ public class BankClient {
 
 public static void main(String[] args) {
 		
-		// Account acObj = new Account(); // Genera error, ¿por qué?
-		
-		// ================================================
-		// TESTING ACCOUNT CLASS	
-		// ================================================
-	
-		// -------------------------------------------------
-		// Debe descomentar este bloque cuando implemente las clases
-		// -------------------------------------------------
-	
-//		Account acObj = new Account(4); 
-//		
-//	
-//		System.out.println(acObj.getBalance());
-//		acObj.deposit(10);
-//		acObj.deposit(40);
-//		acObj.deposit(20);
-//		System.out.println(acObj.getBalance());
-//		acObj.withdraw(20);
-//		System.out.println(acObj.getBalance());
-		
-		// ================================================
-		// TESTING BANK CLASS	
-		// ================================================
-		
-		// -------------------------------------------------
-		// Debe descomentar este bloque cuando implemente las clases
-		// -------------------------------------------------
-		
+
 		
 		Bank bank = new Bank(); 		
 		
-                bank.openAccount("SavingsAccount", 3354678);
-                bank.openAccount("SavingsAccount", 3359302);
-                bank.openAccount("CurrentAccount", 3379844);
-		
+                //quiz pruebas
+                //agregar cuentas
+                bank.openAccount("CDTAccount", 3354678);
+                bank.openAccount("CurrentAccount", 3359302);
+                bank.openAccount("SavingAccount", 3359301);
+                bank.openAccount("CDTAccount", 3379844);
+                //deposito en las cuentas
 		bank.payDividend(3354678, 10);
 		bank.payDividend(3354678, 30);
-		
-                bank.getBalance(3354678);
+		bank.payDividend(3354678, 20);
+		bank.payDividend(3354678, 40);
+
+                //peticion de retiro
+                bank.withdrawAccount(3354678, 20);
+                //calcular rentabilidad cuenta CDT
+                bank.calcularRentabilidad(3354678, 5);
+                 //calcular rentabilidad cuenta de otro tipo (NO ES VALIDO)
+                bank.calcularRentabilidad(3359302, 5);
+                //listado de cuentas CDT
+                bank.imprimirSaldoCuentasCDT(5);
                 
-		bank.payDividend(3359302, 50);
-		bank.payDividend(3359302, 50);
-		
-		bank.payDividend(3379844, 10);
-		bank.payDividend(3379844, 10);
-		
-		bank.getBalance(3379844);
-		
-		bank.withdrawAccount(3379844, 20);
-		bank.withdrawAccount(3379844, 5);
-		
-		bank.getBalance(3379844);
-		
-		bank.withdrawAccount(3379844, 15);
-		
-		bank.getBalance(3379844);
-		
-		bank.sendLetterToOverdraftAccounts();
-		
-	
-		// ==================================================
-	
-	
-		/*
-		 	Debería obtener un resultado similar a este:
-		 	
-		 	*** Val = 20.0
-			CurrentAccount.withdraw
-			CurrentAccount.withdraw
-			Bank.getBalance
-			Bank.payDividend ::: ac.getBalance() = -5.0
-			*** Val = -5.0
-			CurrentAccount.withdraw
-			CurrentAccount.withdraw(...): cannot withdraw this amount.
-			Bank.getBalance
-			Bank.payDividend ::: ac.getBalance() = -5.0
-			*** Val = -5.0
-			Sending letter to this 3379844 account
-		 */
+//                bank.openAccount("SavingsAccount", 3354678);
+//                bank.openAccount("SavingsAccount", 3359302);
+//                bank.openAccount("CurrentAccount", 3379844);
+//		
+//		bank.payDividend(3354678, 10);
+//		bank.payDividend(3354678, 30);
+//		
+//                bank.getBalance(3354678);
+//                
+//		bank.payDividend(3359302, 50);
+//		bank.payDividend(3359302, 50);
+//		
+//		bank.payDividend(3379844, 10);
+//		bank.payDividend(3379844, 10);
+//		
+//		bank.getBalance(3379844);
+//		
+//		bank.withdrawAccount(3379844, 20);
+//		bank.withdrawAccount(3379844, 5);
+//		
+//		bank.getBalance(3379844);
+//		
+//		bank.withdrawAccount(3379844, 15);
+//		
+//		bank.getBalance(3379844);
+//		
+//		bank.sendLetterToOverdraftAccounts();
+//		
+//	
+
 		
 	}
 	

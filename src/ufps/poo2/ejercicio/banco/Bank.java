@@ -15,6 +15,8 @@ public void openAccount(String AccountType, int accnum){
         c=new SavingsAccount(accnum);
     }else if(AccountType=="CurrentAccount"){
         c=new CurrentAccount(accnum);
+    }else if(AccountType=="CDTAccount"){
+        c=new CDTAccount(accnum);
     }else{
         c=new Account(accnum);
     }
@@ -54,7 +56,7 @@ public void payDividend(int accnum, double sum){
 public void withdrawAccount(int accnum, double sum){
     Account acc=this.searchAccount(accnum);
     if(acc==null){
-       System.err.println("Account not found");
+       System.out.println("Account not found");
     }else{
         System.out.println("Acc "+acc.getAccountNumber()+" withdraw: "+sum);
         acc.withdraw(sum);
@@ -64,7 +66,7 @@ public void withdrawAccount(int accnum, double sum){
 public void getBalance(int accnum){
     Account acc=this.searchAccount(accnum);
     if(acc==null){
-       System.err.println("Account not found");
+       System.out.println("Account not found");
     }else{
      acc.print();
     }
@@ -79,5 +81,25 @@ public void sendLetterToOverdraftAccounts(){
         }  
     } 
 }
+
+public void imprimirSaldoCuentasCDT(int numDias){
+    System.out.println("------Listado de cuentas CDT------");
+    for(int i=0;i<this.accounts.size();i++){
+        if(this.accounts.get(i) instanceof CDTAccount){
+          CDTAccount c=  (CDTAccount) this.accounts.get(i);
+          c.calcularRentabilidad(numDias);
+        }
+    }
+}
+
+    public void calcularRentabilidad(int accnum, int numDias) {
+        Account c=this.searchAccount(accnum);
+        
+         if(c instanceof CDTAccount){
+             ((CDTAccount) c).calcularRentabilidad(numDias);
+         }else{
+             System.out.println("La cuenta: "+accnum+" no es de tipo CDT");
+         }
+    }
 
 }
